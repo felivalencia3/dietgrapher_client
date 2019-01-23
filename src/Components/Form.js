@@ -2,7 +2,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import '../styles/entry.css';
-import PropTypes from 'prop-types';
 
 export default class Form extends Component {
   constructor(props) {

@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
-import { Line } from 'react-chartjs';
+// import { Line } from 'react-chartjs';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ export default class Dashboard extends Component {
   }
 
   render() {
-    const { auth, token } = this.state;
+    const { auth } = this.state;
     if (auth) {
       return (
         <div>
