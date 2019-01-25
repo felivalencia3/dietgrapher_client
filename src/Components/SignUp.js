@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import axios from 'axios';
+import '../../public/signup';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -67,6 +68,7 @@ export default class SignUp extends Component {
     }
     return (
       <div id="upbody">
+        <link href="%PUBLIC_URL%/signup.js" />
         {toDashboard}
         <form id="upform" action="#" method="post" onSubmit={this.handleSubmit}>
           <h2 id="formh2">Sign Up</h2>
