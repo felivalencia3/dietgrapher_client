@@ -21,13 +21,6 @@ export default class SignUp extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    const script = document.createElement('script');
-    script.src = '../src/Client/scripts/signup.js';
-    script.async = true;
-    document.body.appendChild(script);
-  }
-
   handleEmail(event) {
     this.setState({
       email: event.target.value,
@@ -47,7 +40,6 @@ export default class SignUp extends Component {
     } = this.state;
     axios.post('http://127.0.0.1:8081/api/users/', { user: { email, password } })
       .then((response) => {
-        console.log(response.data);
         alert('Your account has been created.');
         // eslint-disable-next-line prefer-destructuring
         const token = response.data.user.token;
