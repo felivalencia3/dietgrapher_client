@@ -6,7 +6,8 @@ import {
 } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import axios from 'axios';
-import '../../public/signup';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'signupstatic';
 
 export default class SignUp extends Component {
   constructor(props) {
