@@ -1,4 +1,5 @@
-/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+/*
 import React, {
   Component
 } from 'react';
@@ -18,7 +19,8 @@ export default class Entry extends Component {
       weight: 0,
       age: 0,
       gender: '',
-      height: 0
+      height: 0,
+      token: this.props.location.state.token
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -51,6 +53,33 @@ export default class Entry extends Component {
     );
   }
 }
-/*
+
 
 */
+import React, {
+  Component
+} from 'react';
+
+export default class Entry extends Component {
+  constructor(props) {
+    super(props);
+    const {
+      location: {
+        state: {
+          token
+        }
+      }
+    } = this.props;
+    this.state = {
+      weight: 0,
+      age: 0,
+      gender: '',
+      height: 0,
+      token
+    };
+  }
+
+  render() {
+    return (<></>);
+  }
+}

@@ -13,8 +13,8 @@ const App = () => (
   <Router>
     <div>
       <div className="topnav">
-        <a><Link to="/">Home</Link></a>
-        <a><Link to="/up">Sign-up</Link></a>
+        <Link to="/">Home</Link>
+        <Link to="/up">Sign-up</Link>
         <Login />
       </div>
       <Route exact path="/" component={Home} />

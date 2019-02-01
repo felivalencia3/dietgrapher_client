@@ -9,7 +9,9 @@ body {
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 5s ease infinite;
 	-moz-animation: Gradient 5s ease infinite;
-	animation: Gradient 5s ease infinite;
+  animation: Gradient 5s ease infinite;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
 .topnav a {
@@ -43,8 +45,10 @@ body {
 }
 
 .topnav .login-container {
-  margin-top: 10px;
+  margin-top: 5px;
   float: right;
+  margin-bottom: 5px;
+  top: 50%;
 }
 
 .topnav input[type=text] {
