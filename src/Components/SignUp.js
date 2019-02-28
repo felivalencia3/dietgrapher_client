@@ -98,7 +98,7 @@ export default class SignUp extends Component {
       toDashboard = (
         <Redirect to={{
           pathname: '/start',
-          state: { token }
+          state: { token, email }
         }}
         />
       );

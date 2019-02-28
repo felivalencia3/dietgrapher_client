@@ -5,11 +5,8 @@ body {
 
 .topnav {
   overflow: hidden;
-  background: linear-gradient(-45deg, #48c6ef, #13547a , #80d0c7, #6f86d6);
+  background: url(https://png.pngtree.com/thumb_back/fh260/back_pic/00/14/95/3856767bc8aa37b.jpg);
 	background-size: 400% 400%;
-	-webkit-animation: Gradient 5s ease infinite;
-	-moz-animation: Gradient 5s ease infinite;
-  animation: Gradient 5s ease infinite;
   padding-bottom: 5px;
   padding-top: 5px;
 }

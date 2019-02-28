@@ -49,7 +49,7 @@ export default class Login extends Component {
         this.setState({ redirect: true, token: response.data.user.token });
       })
       .then((error) => {
-        alert(error);
+        console.log(error);
       });
     event.preventDefault();
   }
