@@ -1,10 +1,13 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, {
   Component
 } from 'react';
+import Slider from 'rc-slider';
 import '../styles/entry.css';
+import '../styles/slider.css';
 
 export default class Entry extends Component {
   constructor(props) {
@@ -12,14 +15,7 @@ export default class Entry extends Component {
     const {
       location: {
         state: {
-          token
-        }
-      }
-    } = this.props;
-    const {
-      location: {
-        state: {
-          email
+          token, email
         }
       }
     } = this.props;
@@ -28,14 +24,38 @@ export default class Entry extends Component {
       weight: 0,
       user: email,
       age: 0,
-      gender: '',
+      gender: 'M',
       height: 0,
       token,
       pageNum: 0
     };
     this.goBack = this.goBack.bind(this);
     this.goForward = this.goForward.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleVertical = this.handleVertical.bind(this);
+  }
+
+  handleVertical(value) {
+    this.setState({ height: value });
+  }
+
+  handleSubmit() {
+    const {
+      name,
+      weight,
+      user,
+      age,
+      gender,
+      height,
+    } = this.state;
+    const charGender = gender.charAt(0);
+    alert(`Submitted: \nName:${name}\nUser: ${user}, Age: ${age}\nWeight: ${weight}, Gender: ${charGender}\nHeight: ${height}`);
+  }
+
+  handleSelect(event) {
+    this.setState({ gender: event.target.value });
   }
 
   handleChange(event) {
@@ -49,6 +69,9 @@ export default class Entry extends Component {
     const {
       pageNum
     } = this.state;
+    if (pageNum === 2) {
+      this.handleSubmit();
+    }
     this.setState({
       pageNum: pageNum + 1
     });
@@ -72,13 +95,36 @@ export default class Entry extends Component {
       </div>
     );
     const page1 = (
-      <h1>Page 2</h1>
+      <div>
+        <h1>Enter your Age</h1>
+        <input name="age" type="text" type="number" onChange={this.handleChange} value={this.state.age} placeholder="Age here" />
+        <h1>And Gender</h1>
+        <select value={this.state.gender} onChange={this.handleSelect} className="minimal">
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other/Not Sure</option>
+        </select>
+
+      </div>
     );
     const page2 = (
-      <h1>Page 3</h1>
+      <div>
+        <h1>Height and Weight:</h1>
+        <p>Height in centimeters(cm) and Weight in kilograms(kg) </p>
+        <h2>Height:</h2>
+        <Slider onChange={this.handleVertical} min={50} max={250} />
+        <p>Height: {(this.state.height / 100)}m</p><br />
+        <h1>Weight:</h1>
+        <input name="weight" type="number" onChange={this.handleChange} value={this.state.weight} />
+      </div>
     );
     const submitPage = (
-      <h1>Submitted!</h1>
+      <div className="loader">
+        <div className="inner one" />
+        <div className="inner two" />
+        <div className="inner three" />
+      </div>
+
     );
     let currentPage = (<></>);
     const { pageNum } = this.state;
@@ -100,15 +146,17 @@ export default class Entry extends Component {
         break;
     }
     return (
-      <div className="entry">
-        <div className="login-page">
-          <div className="form">
-            {currentPage}
+      <form onSubmit={this.handleSubmit}>
+        <div className="entry">
+          <div className="login-page">
+            <div className="form">
+              {currentPage}
+            </div>
+            <button className="back" type="button" onClick={this.goBack}>Back</button>
+            <button className="next" type="button" onClick={this.goForward}>Next</button>
           </div>
-          <button className="back" type="button" onClick={this.goBack}>Back</button>
-          <button className="next" type="button" onClick={this.goForward}>Next</button>
         </div>
-      </div>
+      </form>
     );
   }
 }
