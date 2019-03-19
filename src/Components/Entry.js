@@ -109,12 +109,11 @@ export default class Entry extends Component {
     );
     const page2 = (
       <div>
-        <h1>Height and Weight:</h1>
-        <p>Height in centimeters(cm) and Weight in kilograms(kg) </p>
-        <h2>Height:</h2>
+        <h2>Height and Weight:</h2>
+        <h2>Height: (cm)</h2>
         <Slider onChange={this.handleVertical} min={50} max={250} />
-        <p>Height: {(this.state.height / 100)}m</p><br />
-        <h1>Weight:</h1>
+        <p>Height: {(this.state.height / 100)}m</p>
+        <h1>Weight: (kg)</h1>
         <input name="weight" type="number" onChange={this.handleChange} value={this.state.weight} />
       </div>
     );
@@ -146,7 +145,7 @@ export default class Entry extends Component {
         break;
     }
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <div className="entry">
           <div className="login-page">
             <div className="form">
