@@ -49,9 +49,11 @@ export default class Entry extends Component {
       age,
       gender,
       height,
+      token
     } = this.state;
     const charGender = gender.charAt(0);
-    alert(`Submitted: \nName:${name}\nUser: ${user}, Age: ${age}\nWeight: ${weight}, Gender: ${charGender}\nHeight: ${height}`);
+    const presentingToken = token.substring(0, 4);
+    alert(`Submitted: \nName:${name}\nUser: ${user}, Age: ${age}\nWeight: ${weight}, Gender: ${charGender}\nHeight: ${height}, Token: ${presentingToken}`);
   }
 
   handleSelect(event) {
