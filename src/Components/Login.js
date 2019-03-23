@@ -4,6 +4,7 @@ import React, {
 } from 'react';
 import {
   Redirect,
+  Route
 } from 'react-router-dom';
 import '../styles/app.css';
 import axios from 'axios';
@@ -36,17 +37,29 @@ export default class Login extends Component {
   }
 
   handleSubmit(event) {
-    const { redirect } = this.state;
+    const {
+      redirect
+    } = this.state;
     if (redirect) {
-      this.setState({ redirect: false });
+      this.setState({
+        redirect: false
+      });
     }
     const {
       email,
       password,
     } = this.state;
-    axios.post('http://127.0.0.1:8081/api/users/login', { user: { email, password } })
+    axios.post('http://127.0.0.1:8081/api/users/login', {
+        user: {
+          email,
+          password
+        }
+      })
       .then((response) => {
-        this.setState({ redirect: true, token: response.data.user.token });
+        this.setState({
+          redirect: true,
+          token: response.data.user.token
+        });
       })
       .then((error) => {
         console.log(error);
@@ -55,19 +68,31 @@ export default class Login extends Component {
   }
 
   render() {
-    const {
-      redirect, email, password, token,
-    } = this.state;
-    let reroute;
-    if (redirect) {
-      reroute = (
-        <Redirect to={{
-          pathname: '/dash',
-          state: { token },
-        }}
-        />
-      );
-    }
+      const {
+        redirect,
+        email,
+        password,
+        token,
+      } = this.state;
+      let reroute;
+      if (redirect) {
+        reroute = (
+          /*
+          <Redirect to={{
+            pathname: '/dash',
+            state: { token },
+          }}
+          /> */
+          <
+          Route path = "/dashboard"
+          component = {
+            () => {
+              window.location = 
+            }
+          }
+          />
+        );
+      }
     return (
       <div className="login-container">
         <form onSubmit={this.handleSubmit} method="POST">

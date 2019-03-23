@@ -120,10 +120,12 @@ export default class Entry extends Component {
       </div>
     );
     const submitPage = (
-      <div className="loader">
-        <div className="inner one" />
-        <div className="inner two" />
-        <div className="inner three" />
+      <div>
+        <div className="loader">
+          <div className="inner one" />
+          <div className="inner two" />
+          <div className="inner three" />
+        </div>
       </div>
 
     );

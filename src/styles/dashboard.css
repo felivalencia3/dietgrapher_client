@@ -1,0 +1,34 @@
+
+.wrapper {
+  color: black;
+  font-family: Helvetica;
+  text-align: center;
+  width: initial;
+}
+
+nav, section {
+  float: right;
+}
+
+nav {
+  width: 25%;
+}
+
+section {
+  width: 75%;
+}
+header,
+nav,
+section {
+  border: thin solid rgb(240,134,23);
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+
+header {
+  padding: 13% 0;
+}
+
+nav, section {
+  padding: 18% 0;
+}

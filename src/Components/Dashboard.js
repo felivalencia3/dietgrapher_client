@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 // import { Line } from 'react-chartjs';
 import axios from 'axios';
+import '../styles/dashboard.css';
+import GraphController from './GraphController';
+import NavigationController from './NavigationController';
+import CalculatorController from './CalculatorController';
 // import { Redirect } from 'react-router-dom';
 
 export default class Dashboard extends Component {
@@ -31,15 +34,12 @@ export default class Dashboard extends Component {
 
   render() {
     const { auth } = this.state;
-    if (auth) {
-      return (
-        <div>
-          <h2>You are Authorized!</h2>
-        </div>
-      );
-    }
     return (
-      <h2>Authorization Failed...</h2>
+      <div className="wrapper">
+        <nav><NavigationController /></nav>
+        <section><GraphController auth={auth} /></section>
+        <header><CalculatorController /></header>
+      </div>
     );
   }
 }
