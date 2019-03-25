@@ -50,11 +50,11 @@ export default class Login extends Component {
       password,
     } = this.state;
     axios.post('http://127.0.0.1:8081/api/users/login', {
-        user: {
-          email,
-          password
-        }
-      })
+      user: {
+        email,
+        password
+      }
+    })
       .then((response) => {
         this.setState({
           redirect: true,
@@ -68,34 +68,28 @@ export default class Login extends Component {
   }
 
   render() {
-      const {
-        redirect,
-        email,
-        password,
-        token,
-      } = this.state;
-      let reroute;
-      if (redirect) {
-        reroute = (
-          /*
-          <Redirect to={{
-            pathname: '/dash',
-            state: { token },
-          }}
-          /> */
-          <
-          Route path = "/dashboard"
-          component = {
-            () => {
-              window.location = 
-            }
+    const {
+      redirect,
+      email,
+      password,
+      token,
+    } = this.state;
+    let reroute;
+    if (redirect) {
+      reroute = (
+        <Route
+          path="/dashboard"
+          component={
+          () => {
+            window.location = 'https://dietgrapher-dashboard.tk';
           }
-          />
-        );
-      }
+        }
+        />
+      );
+    }
     return (
       <div className="login-container">
-        <form onSubmit={this.handleSubmit} method="POST">
+        <form onSubmit={this.handleSubmit} method="POST" netlify>
           {reroute}
           <input value={email} onChange={this.handleEmail} type="text" placeholder="Email" name="email" />
           <input value={password} onChange={this.handlePassword} type="password" placeholder="Password" name="password" />

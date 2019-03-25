@@ -107,7 +107,7 @@ export default class SignUp extends Component {
       <div id="upbody">
         {showScript}
         {toDashboard}
-        <form id="upform" action="#" method="post" onSubmit={this.handleSubmit}>
+        <form id="upform" action="#" method="post" onSubmit={this.handleSubmit} netlify>
           <h2 id="formh2">Sign Up</h2>
           <p className="formp">
             <label htmlFor="Email" className="floatLabel">Email</label>
