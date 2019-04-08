@@ -66,7 +66,7 @@ export default class SignUp extends Component {
       email,
       password,
     } = this.state;
-    axios.post('http://127.0.0.1:8081/api/users/', { user: { email, password } })
+    axios.post('https://dietgrapher-server.herokuapp.com/api/users/', { user: { email, password } })
       .then((response) => {
         alert('Your account has been created.');
         // eslint-disable-next-line prefer-destructuring

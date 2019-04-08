@@ -21,7 +21,7 @@ export default class Dashboard extends Component {
   componentDidMount() {
     const { token } = this.state;
 
-    axios.get('http://127.0.0.1:8081/api/users/redirect', { headers: { Authorization: `Token ${token}` } })
+    axios.get('https://dietgrapher-server.herokuapp.com/api/users/redirect', { headers: { Authorization: `Token ${token}` } })
       .then((response) => {
         if (response.data) {
           this.setState({ auth: true });

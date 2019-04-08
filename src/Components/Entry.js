@@ -6,8 +6,10 @@ import React, {
   Component
 } from 'react';
 import Slider from 'rc-slider';
+import { Route } from 'react-router-dom';
 import '../styles/entry.css';
 import '../styles/slider.css';
+import axios from 'axios';
 
 export default class Entry extends Component {
   constructor(props) {
@@ -27,7 +29,8 @@ export default class Entry extends Component {
       gender: 'M',
       height: 0,
       token,
-      pageNum: 0
+      pageNum: 0,
+      redirect: false
     };
     this.goBack = this.goBack.bind(this);
     this.goForward = this.goForward.bind(this);
@@ -54,6 +57,23 @@ export default class Entry extends Component {
     const charGender = gender.charAt(0);
     const presentingToken = token.substring(0, 4);
     alert(`Submitted: \nName:${name}\nUser: ${user}, Age: ${age}\nWeight: ${weight}, Gender: ${charGender}\nHeight: ${height}, Token: ${presentingToken}`);
+    const url = 'https://dietgrapher-server.herokuapp.com/api/weight/newuser';
+    axios.post(url, {
+      user,
+      weight,
+      gender,
+      height,
+      age
+    }, {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+      .then((response) => {
+        if (response.status > 200 && response.status < 350) {
+          this.setState({ redirect: true });
+        }
+      });
   }
 
   handleSelect(event) {
@@ -89,6 +109,11 @@ export default class Entry extends Component {
   }
 
   render() {
+    const fooRedirect = this.state.redirect;
+    let toDashboard = (<></>);
+    if (fooRedirect) {
+      toDashboard = <Route path="/dashboard" component={() => { window.location = 'https://dietdashboard.herokuapp.com/'; return null; }} />;
+    }
     const page0 = (
       <div>
         <h1>Welcome to DietGrapher!</h1>
@@ -150,6 +175,7 @@ export default class Entry extends Component {
     }
     return (
       <form>
+        {{ toDashboard }}
         <div className="entry">
           <div className="login-page">
             <div className="form">

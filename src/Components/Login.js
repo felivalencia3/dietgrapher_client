@@ -49,7 +49,7 @@ export default class Login extends Component {
       email,
       password,
     } = this.state;
-    axios.post('http://127.0.0.1:8081/api/users/login', {
+    axios.post('https://dietgrapher-server.herokuapp.com/api/users/login', {
       user: {
         email,
         password
